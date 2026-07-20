@@ -1,0 +1,49 @@
+/* ===========================
+   ANIMACIONES
+=========================== */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flotar {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.hero-text {
+  animation: fadeUp 0.8s ease;
+}
+
+.hero-image {
+  animation: fadeUp 1s ease;
+}
+
+/*.card {
+  animation: fadeUp 0.8s ease;
+}*/
+
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}

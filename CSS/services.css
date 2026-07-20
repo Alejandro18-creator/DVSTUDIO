@@ -1,0 +1,30 @@
+/* ===========================
+   SERVICES
+=========================== */
+
+.services {
+  padding: 120px 0;
+}
+
+.services h2 {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 60px;
+  color: var(--color-blanco);
+  position: relative;
+}
+.services h2::after{
+    content:"";
+    display:block;
+    width:90px;
+    height:4px;
+    margin:15px auto 0;
+    background:var(--color-celeste);
+    border-radius:50px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}

@@ -1,0 +1,42 @@
+/* ===========================
+   CARDS
+=========================== */
+
+.card {
+  padding: 35px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  transition: 0.35s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-12px) scale(1.02);
+  border-color: var(--color-celeste);
+  box-shadow: 0 20px 50px rgba(0, 212, 255, 0.25);
+}
+
+.card i {
+  font-size: 42px;
+  color: var(--color-celeste);
+  margin-bottom: 25px;
+}
+
+.card h3 {
+  margin-bottom: 18px;
+  font-size: 1.5rem;
+}
+
+.card p {
+  color: var(--color-gris);
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+.card .btn {
+  margin-top: auto;
+  align-self: flex-start;
+}
