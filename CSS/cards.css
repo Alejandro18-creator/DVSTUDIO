@@ -12,6 +12,7 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .card:hover {
@@ -39,4 +40,39 @@
 .card .btn {
   margin-top: auto;
   align-self: flex-start;
+}
+.demo-features {
+  margin: 20px 0 25px;
+  padding-left: 0;
+}
+
+.demo-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-gris);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.demo-features li::before {
+  content: "✓";
+  color: var(--color-celeste);
+  font-weight: 700;
+}
+.demo-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.demo-tech span {
+  background: rgba(0, 212, 255, 0.12);
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  color: var(--color-celeste);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
 }
