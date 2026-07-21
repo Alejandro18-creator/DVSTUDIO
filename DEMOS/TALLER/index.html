@@ -1,116 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MotorPro - Demo</title>
 
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <aside class="sidebar">
+      <h2>🚗 MotorPro</h2>
 
-        <h2>🚗 MotorPro</h2>
-
-        <nav>
-            <a href="#">Panel Principal</a>
-            <a href="#">Agenda</a>
-            <a href="#">Clientes</a>
-            <a href="#">Vehículos</a>
-            <a href="#">Órdenes</a>
-            <a href="#">Inventario</a>
-            <a href="#">Reportes</a>
-        </nav>
-
+      <nav>
+        <a href="#" data-view="panel">Panel Principal</a>
+        <a href="#" data-view="agenda">Agenda</a>
+        <a href="#" data-view="clientes">Clientes</a>
+        <a href="#" data-view="vehiculos">Vehículos</a>
+        <a href="#" data-view="ordenes">Órdenes</a>
+        <a href="#" data-view="inventario">Inventario</a>
+        <a href="#" data-view="reportes">Reportes</a>
+      </nav>
     </aside>
 
-    <main class="content">
+    <main class="content" id="contenido"></main>
 
-        <div class="topbar">
-
-    <div>
-        <h1>Panel Principal</h1>
-
-        <p>Bienvenido a MotorPro. Aquí podrás controlar las operaciones diarias del taller.</p>
-    </div>
-
-    <button class="btn-primary">
-        + Nueva OT
-    </button>
-
-</div>
-
-<div class="cards">
-
-    <div class="card">
-        <h3>🚗 Vehículos en Taller</h3>
-        <h2>0</h2>
-    </div>
-
-    <div class="card">
-        <h3>📅 Citas de Hoy</h3>
-        <h2>0</h2>
-    </div>
-
-    <div class="card">
-        <h3>👥 Clientes Registrados</h3>
-        <h2>0</h2>
-    </div>
-
-    <div class="card">
-        <h3>🔧 OT Abiertas</h3>
-        <h2>0</h2>
-    </div>
-
-</div>
-
-<section class="panel">
-
-    <h2>Vehículos ingresados hoy</h2>
-
-    <table>
-
-        <thead>
-            <tr>
-                <th>Patente</th>
-                <th>Cliente</th>
-                <th>Vehículo</th>
-                <th>Estado</th>
-            </tr>
-        </thead>
-
-        <tbody>
-
-            <tr>
-                <td>LKHG52</td>
-                <td>Juan Pérez</td>
-                <td>Toyota Yaris</td>
-                <td>Diagnóstico</td>
-            </tr>
-
-            <tr>
-                <td>PRXT18</td>
-                <td>María González</td>
-                <td>Kia Morning</td>
-                <td>Reparación</td>
-            </tr>
-
-            <tr>
-                <td>HJFD90</td>
-                <td>Carlos Soto</td>
-                <td>Hyundai Accent</td>
-                <td>Listo para entrega</td>
-            </tr>
-
-        </tbody>
-
-    </table>
-
-</section>
-    </main>
-
-    <script src="app.js"></script>
-
-</body>
+    <script type="module" src="app.js"></script>
+  </body>
 </html>
