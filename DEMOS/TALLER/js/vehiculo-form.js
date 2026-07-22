@@ -1,5 +1,4 @@
-
-export function mostrarFormularioVehiculo(vehiculo = {}) {
+export function mostrarFormularioVehiculo(vehiculo = {}, clientes = []) {
   return `
 
     <div class="modal-overlay">
@@ -39,6 +38,30 @@ export function mostrarFormularioVehiculo(vehiculo = {}) {
             id="anioVehiculo"
             value="${vehiculo.anio || ""}">
         </div>
+
+        <div class="form-group">
+
+  <label>Cliente</label>
+
+  <select id="clienteVehiculo">
+
+    <option value="">Seleccione un cliente</option>
+
+    ${clientes
+      .map(
+        (cliente) => `
+          <option
+            value="${cliente.nombre}"
+            ${vehiculo.cliente === cliente.nombre ? "selected" : ""}>
+            ${cliente.nombre}
+          </option>
+        `,
+      )
+      .join("")}
+
+  </select>
+
+</div>
 
         <div class="acciones">
 

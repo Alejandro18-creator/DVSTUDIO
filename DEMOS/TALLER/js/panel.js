@@ -1,17 +1,15 @@
 export function mostrarPanelPrincipal(contenido) {
-
-    contenido.innerHTML = `
+  contenido.innerHTML = `
 
         <div class="topbar">
 
             <div>
                 <h1>Panel Principal</h1>
-                <p>Bienvenido a MotorPro. Aquí podrás controlar las operaciones diarias del taller.</p>
+                <p>
+                    Bienvenido a MotorPro. Aquí podrás controlar una <span class="demo-texto">demostración</span> 
+                    de las operaciones diarias de un taller.
+                </p>
             </div>
-
-            <button class="btn-primary">
-                + Nueva OT
-            </button>
 
         </div>
 
@@ -40,5 +38,4 @@ export function mostrarPanelPrincipal(contenido) {
         </div>
 
     `;
-
 }

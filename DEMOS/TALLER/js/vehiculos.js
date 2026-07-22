@@ -1,4 +1,5 @@
 import { mostrarFormularioVehiculo } from "./vehiculo-form.js";
+import { clientes } from "./clientes.js";
 
 const vehiculos = [];
 
@@ -16,7 +17,7 @@ function renderVehiculos() {
         <td>${vehiculo.marca}</td>
         <td>${vehiculo.modelo}</td>
         <td>${vehiculo.anio}</td>
-        <td>-</td>
+        <td>${vehiculo.cliente || "-"}</td>
 
         <td>
 
@@ -60,7 +61,7 @@ function renderVehiculos() {
 function abrirFormulario(vehiculo = {}, indice = null) {
   document.body.insertAdjacentHTML(
     "beforeend",
-    mostrarFormularioVehiculo(vehiculo),
+    mostrarFormularioVehiculo(vehiculo, clientes),
   );
 
   const modal = document.getElementById("modalVehiculo");
@@ -105,6 +106,8 @@ function abrirFormulario(vehiculo = {}, indice = null) {
       modelo: document.getElementById("modeloVehiculo").value.trim(),
 
       anio: document.getElementById("anioVehiculo").value.trim(),
+
+      cliente: document.getElementById("clienteVehiculo").value,
     };
 
     if (modal.dataset.indice !== undefined) {
@@ -176,3 +179,5 @@ export function mostrarVehiculos(contenido) {
 
   renderVehiculos();
 }
+
+export { vehiculos };

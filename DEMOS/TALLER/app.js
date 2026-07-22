@@ -2,6 +2,7 @@ import { mostrarPanelPrincipal } from "./js/panel.js";
 import { mostrarAgenda } from "./js/agenda.js";
 import { mostrarClientes } from "./js/clientes.js";
 import { mostrarVehiculos } from "./js/vehiculos.js";
+import { mostrarOrdenes } from "./js/ordenes.js";
 
 const contenido = document.getElementById("contenido");
 
@@ -24,7 +25,7 @@ function cargarVista(vista) {
       break;
 
     case "ordenes":
-      // mostrarOrdenes();
+      mostrarOrdenes(contenido);
       break;
 
     case "inventario":
