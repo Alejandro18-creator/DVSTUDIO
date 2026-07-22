@@ -1,7 +1,7 @@
 import { vehiculos } from "./vehiculos.js";
 import { mostrarFormularioOT } from "./ot-form.js";
 
-const ordenes = [];
+const ordenes = JSON.parse(sessionStorage.getItem("ordenes")) || [];
 
 function renderOrdenes() {
   const tabla = document.getElementById("tablaOT");
@@ -77,6 +77,8 @@ function abrirFormulario() {
 
       estado: "Abierta",
     });
+
+    sessionStorage.setItem("ordenes", JSON.stringify(ordenes));
 
     document.querySelector(".modal-overlay").remove();
 

@@ -1,7 +1,7 @@
 import { mostrarFormularioVehiculo } from "./vehiculo-form.js";
 import { clientes } from "./clientes.js";
 
-const vehiculos = [];
+const vehiculos = JSON.parse(sessionStorage.getItem("vehiculos")) || [];
 
 function renderVehiculos() {
   const lista = document.getElementById("listaVehiculos");
@@ -44,6 +44,8 @@ function renderVehiculos() {
       const indice = Number(boton.dataset.indice);
 
       vehiculos.splice(indice, 1);
+
+      sessionStorage.setItem("vehiculos", JSON.stringify(vehiculos));
 
       renderVehiculos();
     });
@@ -112,9 +114,12 @@ function abrirFormulario(vehiculo = {}, indice = null) {
 
     if (modal.dataset.indice !== undefined) {
       vehiculos[modal.dataset.indice] = vehiculoNuevo;
+
+      sessionStorage.setItem("vehiculos", JSON.stringify(vehiculos));
     } else {
       vehiculos.push(vehiculoNuevo);
     }
+    sessionStorage.setItem("vehiculos", JSON.stringify(vehiculos));
 
     renderVehiculos();
 

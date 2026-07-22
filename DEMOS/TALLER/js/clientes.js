@@ -1,6 +1,6 @@
 import { mostrarFormularioCliente } from "./cliente-form.js";
 
-const clientes = [];
+const clientes = JSON.parse(sessionStorage.getItem("clientes")) || [];
 
 function renderizarClientes() {
   const lista = document.getElementById("listaClientes");
@@ -43,6 +43,8 @@ function renderizarClientes() {
       const indice = Number(boton.dataset.indice);
 
       clientes.splice(indice, 1);
+
+      sessionStorage.setItem("clientes", JSON.stringify(clientes));
 
       renderizarClientes();
     });
@@ -100,6 +102,7 @@ function abrirFormulario(cliente = {}, indice = null) {
     } else {
       clientes.push(clienteNuevo);
     }
+    sessionStorage.setItem("clientes", JSON.stringify(clientes));
 
     renderizarClientes();
 
