@@ -1,3 +1,5 @@
+import { vehiculosData } from "./datos/vehiculos.js";
+
 const citas = JSON.parse(sessionStorage.getItem("citas")) || [];
 
 function renderAgenda() {
@@ -19,34 +21,65 @@ function renderAgenda() {
 
   tabla.innerHTML = "";
 
-  citas.forEach((cita) => {
+  citas.forEach((cita, index) => {
     tabla.innerHTML += `
             <tr>
                 <td>${cita.hora}</td>
                 <td>${cita.cliente}</td>
                 <td>${cita.vehiculo}</td>
                 <td>${cita.patente}</td>
+                <td>${cita.motivo}</td>
                 <td>${cita.estado}</td>
+                <td>
+                    <button class="btn-eliminar" data-index="${index}">
+                    Eliminar
+                    </button>
+                </td>
             </tr>
         `;
   });
+}
+
+function cargarHorasDisponibles() {
+  const select = document.getElementById("horaCita");
+
+  select.innerHTML = `
+        <option value="">Seleccione una hora</option>
+    `;
+
+  for (let hora = 9; hora <= 18; hora++) {
+    const texto = `${String(hora).padStart(2, "0")}:00`;
+
+    select.innerHTML += `
+            <option value="${texto}">
+                ${texto}
+            </option>
+        `;
+  }
 }
 
 function mostrarFormularioCita() {
   document.body.insertAdjacentHTML(
     "beforeend",
     `
-
         <div class="modal-overlay">
 
             <div class="modal">
 
-                <h2>Nueva Cita</h2>
+                <h2>Solicitud de Atención</h2>
 
                 <div class="form-group">
-                    <label>Hora</label>
-                    <input type="time" id="horaCita">
-                </div>
+    <label>Fecha</label>
+    <input type="date" id="fechaCita">
+</div>
+
+<div class="form-group">
+    <label>Hora</label>
+
+    <select id="horaCita">
+        <option value="">Seleccione una hora</option>
+    </select>
+</div>
 
                 <div class="form-group">
                     <label>Cliente</label>
@@ -54,9 +87,30 @@ function mostrarFormularioCita() {
                 </div>
 
                 <div class="form-group">
-                    <label>Vehículo</label>
-                    <input type="text" id="vehiculoCita">
-                </div>
+    <label>Teléfono</label>
+    <input type="tel" id="telefonoCita">
+</div>
+
+<div class="form-group">
+    <label>Correo Electrónico</label>
+    <input type="email" id="emailCita">
+</div>
+
+                <div class="form-group">
+    <label>Marca</label>
+
+    <select id="marcaCita">
+        <option value="">Seleccione una marca</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label>Modelo</label>
+
+    <select id="modeloCita">
+        <option value="">Seleccione una marca primero</option>
+    </select>
+</div>
 
                 <div class="form-group">
                     <label>Patente</label>
@@ -68,15 +122,6 @@ function mostrarFormularioCita() {
                     <textarea id="motivoCita"></textarea>
                 </div>
 
-                <div class="form-group">
-                    <label>Estado</label>
-
-                    <select id="estadoCita">
-                        <option>Reservada</option>
-                        <option>Confirmada</option>
-                        <option>Cancelada</option>
-                    </select>
-                </div>
 
                 <div class="acciones-modal">
                     <button class="btn-secondary" id="btnCancelarCita">
@@ -94,9 +139,100 @@ function mostrarFormularioCita() {
 
     `,
   );
+  cargarHorasDisponibles();
+
+  const inputFecha = document.getElementById("fechaCita");
+
+  const hoy = new Date().toISOString().split("T")[0];
+
+  inputFecha.min = hoy;
+
+  inputFecha.addEventListener("click", () => {
+    if (typeof inputFecha.showPicker === "function") {
+      inputFecha.showPicker();
+    }
+  });
+
+  const selectMarca = document.getElementById("marcaCita");
+
+  Object.keys(vehiculosData).forEach((marca) => {
+    selectMarca.innerHTML += `
+        <option value="${marca}">
+            ${marca}
+        </option>
+    `;
+  });
+
+  const selectModelo = document.getElementById("modeloCita");
+
+  selectMarca.addEventListener("change", () => {
+    selectModelo.innerHTML = `
+        <option value="">Seleccione un modelo</option>
+    `;
+
+    const modelos = vehiculosData[selectMarca.value] || [];
+
+    modelos.forEach((modelo) => {
+      selectModelo.innerHTML += `
+            <option value="${modelo}">
+                ${modelo}
+            </option>
+        `;
+    });
+  });
 
   document.getElementById("btnCancelarCita").addEventListener("click", () => {
     document.querySelector(".modal-overlay").remove();
+  });
+  document.getElementById("btnGuardarCita").addEventListener("click", () => {
+    const cita = {
+      telefono: document.getElementById("telefonoCita").value.trim(),
+
+      email: document.getElementById("emailCita").value.trim(),
+
+      hora: document.getElementById("horaCita").value,
+
+      cliente: document.getElementById("clienteCita").value.trim(),
+
+      marca: document.getElementById("marcaCita").value,
+
+      modelo: document.getElementById("modeloCita").value,
+
+      patente: document
+        .getElementById("patenteCita")
+        .value.trim()
+        .toUpperCase(),
+
+      motivo: document.getElementById("motivoCita").value.trim(),
+
+      estado: "Pendiente",
+    };
+
+    if (!cita.hora || !cita.cliente) {
+      alert("Debe ingresar al menos la hora y el cliente.");
+      return;
+    }
+
+    citas.push(cita);
+
+    sessionStorage.setItem("citas", JSON.stringify(citas));
+
+    document.querySelector(".modal-overlay").remove();
+
+    renderAgenda();
+    document.querySelectorAll(".btn-eliminar").forEach((boton) => {
+      boton.addEventListener("click", () => {
+        const index = Number(boton.dataset.index);
+
+        if (!confirm("¿Eliminar esta cita?")) return;
+
+        citas.splice(index, 1);
+
+        sessionStorage.setItem("citas", JSON.stringify(citas));
+
+        renderAgenda();
+      });
+    });
   });
 }
 
@@ -111,7 +247,7 @@ export function mostrarAgenda(contenido) {
             </div>
 
             <button class="btn-primary" id="btnNuevaCita">
-    + Nueva Cita
+    + Solicitud de Atención
 </button>
 
         </div>
@@ -128,7 +264,9 @@ export function mostrarAgenda(contenido) {
                         <th>Cliente</th>
                         <th>Vehículo</th>
                         <th>Patente</th>
+                        <th>Motivo</th>
                         <th>Estado</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
 

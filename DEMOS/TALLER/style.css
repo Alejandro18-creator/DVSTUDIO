@@ -147,10 +147,12 @@ tbody tr:hover {
 .modal {
   width: 100%;
   max-width: 600px;
+  max-height: 90vh;
   background: #1f2937;
   border-radius: 12px;
   padding: 25px;
   box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+  overflow-y: auto;
 }
 
 .modal h2 {
