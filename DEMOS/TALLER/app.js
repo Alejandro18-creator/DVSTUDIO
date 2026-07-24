@@ -3,6 +3,7 @@ import { mostrarAgenda } from "./js/agenda.js";
 import { mostrarClientes } from "./js/clientes.js";
 import { mostrarVehiculos } from "./js/vehiculos.js";
 import { mostrarOrdenes } from "./js/ordenes.js";
+import { mostrarInventario } from "./js/inventario.js";
 
 const contenido = document.getElementById("contenido");
 
@@ -29,8 +30,8 @@ function cargarVista(vista) {
       break;
 
     case "inventario":
-      // mostrarInventario();
-      break;
+  mostrarInventario(contenido);
+  break;
 
     case "reportes":
       // mostrarReportes();
@@ -47,6 +48,7 @@ enlaces.forEach((enlace) => {
     const vista = this.dataset.view;
 
     cargarVista(vista);
+
   });
 });
 
