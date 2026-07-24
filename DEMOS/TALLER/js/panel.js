@@ -13,6 +13,15 @@ export function mostrarPanelPrincipal(contenido) {
 
         </div>
 
+        <div class="topbar">
+
+    <div>
+        <h1>Reportes</h1>
+        <p>Resumen general de la actividad del taller.</p>
+    </div>
+
+</div>
+
         <div class="cards">
 
             <div class="card">

@@ -4,6 +4,7 @@ import { mostrarClientes } from "./js/clientes.js";
 import { mostrarVehiculos } from "./js/vehiculos.js";
 import { mostrarOrdenes } from "./js/ordenes.js";
 import { mostrarInventario } from "./js/inventario.js";
+import { mostrarReportes } from "./js/reportes.js";
 
 const contenido = document.getElementById("contenido");
 
@@ -30,11 +31,11 @@ function cargarVista(vista) {
       break;
 
     case "inventario":
-  mostrarInventario(contenido);
-  break;
+      mostrarInventario(contenido);
+      break;
 
     case "reportes":
-      // mostrarReportes();
+      mostrarReportes(contenido);
       break;
   }
 }
@@ -48,7 +49,6 @@ enlaces.forEach((enlace) => {
     const vista = this.dataset.view;
 
     cargarVista(vista);
-
   });
 });
 
