@@ -9,5 +9,27 @@
     --color-blanco:#FFFFFF;
 
     --color-gris:#B8C0CC;
+        /* ==========================
+       DEMOS / SISTEMAS
+    ========================== */
+
+    --demo-fondo:#0f172a;
+    --demo-sidebar:#111827;
+    --demo-card:#1e293b;
+    --demo-borde:#334155;
+
+    --demo-texto:#ffffff;
+    --demo-texto-sec:#cbd5e1;
+
+    --demo-primario:#38bdf8;
+    --demo-hover:#2563eb;
+
+    --demo-success:#22c55e;
+    --demo-warning:#f59e0b;
+    --demo-danger:#ef4444;
+
+    --demo-radius:12px;
+
+    --demo-shadow:0 8px 20px rgba(0,0,0,.18);
 
 }
