@@ -170,12 +170,16 @@ tbody tr:hover {
   font-weight: 600;
 }
 
-.form-group input {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #3b4454;
-  background: #111827;
-  color: #fff;
+.form-group input,
+.form-group select {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: inherit;
+    background: #fff;
 }
 
 .acciones {
