@@ -1,138 +1,198 @@
 export function mostrarVistaLiquidacion(datos) {
+  return `
 
-    return `
+<div class="modal-overlay">
 
-    <div class="modal-overlay">
+<div class="modal modal-liquidacion">
 
-        <div class="modal modal-liquidacion">
+<div class="encabezado-liquidacion">
 
-            <h2 style="text-align:center;">
-                LIQUIDACIÓN DE SUELDO
-            </h2>
+<div class="icono-liquidacion">📄</div>
 
-            <hr>
+<h1>LIQUIDACIÓN DE SUELDO</h1>
 
-            <div class="fila-formulario">
-                <strong>Trabajador:</strong>
-                <span>${datos.trabajador}</span>
-            </div>
+<p>Detalle de haberes y descuentos del trabajador</p>
 
-            <div class="fila-formulario">
-                <strong>Mes:</strong>
-                <span>${datos.mes}</span>
-            </div>
+</div>
 
-            <div class="fila-formulario">
-                <strong>Empresa:</strong>
-                <span>${datos.empresa || "-"}</span>
-            </div>
+<div class="tarjeta-datos">
 
-            <div class="fila-formulario">
-                <strong>Cargo:</strong>
-                <span>${datos.cargo || "-"}</span>
-            </div>
+<div class="dato">
 
-            <br>
+<div class="icono">👤</div>
 
-            <h3>HABERES</h3>
+<div>
 
-            <table class="tabla">
+<label>TRABAJADOR</label>
 
-                <tbody>
+<h3>${datos.trabajador}</h3>
 
-                    <tr>
-                        <td>Producción</td>
-                        <td style="text-align:right;">
-                            ${datos.produccion || "$0"}
-                        </td>
-                    </tr>
+</div>
 
-                    <tr>
-                        <td>Sueldo mínimo</td>
-                        <td style="text-align:right;">
-                            ${datos.sueldoMinimo}
-                        </td>
-                    </tr>
+</div>
 
-                    <tr>
-                        <td><strong>Total Haberes</strong></td>
-                        <td style="text-align:right;">
-                            <strong>${datos.totalHaberes || "$0"}</strong>
-                        </td>
-                    </tr>
+<div class="dato">
 
-                </tbody>
+<div class="icono">📅</div>
 
-            </table>
+<div>
 
-            <br>
+<label>MES</label>
 
-            <h3>DESCUENTOS</h3>
+<h3>${datos.mes}</h3>
 
-            <table class="tabla">
+</div>
 
-                <tbody>
+</div>
 
-                    <tr>
-                        <td>AFP</td>
-                        <td style="text-align:right;">
-                            ${datos.afp || "$0"}
-                        </td>
-                    </tr>
+<div class="dato">
 
-                    <tr>
-                        <td>Salud</td>
-                        <td style="text-align:right;">
-                            ${datos.salud || "$0"}
-                        </td>
-                    </tr>
+<div class="icono">🏢</div>
 
-                    <tr>
-                        <td>Anticipo</td>
-                        <td style="text-align:right;">
-                            ${datos.anticipo}
-                        </td>
-                    </tr>
+<div>
 
-                    <tr>
-                        <td><strong>Total Descuentos</strong></td>
-                        <td style="text-align:right;">
-                            <strong>${datos.totalDescuentos || "$0"}</strong>
-                        </td>
-                    </tr>
+<label>EMPRESA</label>
 
-                </tbody>
+<h3>${datos.empresa}</h3>
 
-            </table>
+</div>
 
-            <br>
+</div>
 
-            <h2 style="text-align:right;">
+<div class="dato">
 
-                Líquido a Pagar:
-                ${datos.liquido || "$0"}
+<div class="icono">💼</div>
 
-            </h2>
+<div>
 
-            <div class="acciones-formulario">
+<label>CARGO</label>
 
-                <button id="btnGuardarLiquidacion">
-                    Guardar
-                </button>
+<h3>${datos.cargo}</h3>
 
-                <button id="btnImprimirLiquidacion">
-                    Imprimir
-                </button>
+</div>
 
-                <button id="btnCerrarPreview">
-                    Volver
-                </button>
+</div>
 
-            </div>
+</div>
 
-        </div>
+<div class="columnas-liquidacion">
+
+    <div class="card card-haberes">
+
+        <h2>💵 HABERES</h2>
+
+        <table>
+
+            <tr>
+
+                <th>Concepto</th>
+
+                <th>Monto</th>
+
+            </tr>
+
+            <tr>
+
+                <td>Producción</td>
+
+                <td>${datos.produccion}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Sueldo mínimo</td>
+
+                <td>${datos.sueldoMinimo}</td>
+
+            </tr>
+
+            <tr class="total">
+
+                <td>Total Haberes</td>
+
+                <td>${datos.totalHaberes}</td>
+
+            </tr>
+
+        </table>
 
     </div>
 
-    `;
+    <div class="card card-descuentos">
+
+        <h2>🛡 DESCUENTOS</h2>
+
+        <table>
+
+            <tr>
+
+                <th>Concepto</th>
+
+                <th>Monto</th>
+
+            </tr>
+
+            <tr>
+
+                <td>AFP</td>
+
+                <td>${datos.afp}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Salud</td>
+
+                <td>${datos.salud}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Anticipo</td>
+
+                <td>${datos.anticipo}</td>
+
+            </tr>
+
+            <tr class="total">
+
+                <td>Total Descuentos</td>
+
+                <td>${datos.totalDescuentos}</td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<div class="liquido-final">
+
+<h2>LÍQUIDO A PAGAR</h2>
+
+<h1>${datos.liquido}</h1>
+
+</div>
+
+<div class="acciones-formulario">
+
+<button id="btnGuardarLiquidacion">💾 Guardar</button>
+
+<button id="btnImprimirLiquidacion">🖨 Imprimir</button>
+
+<button id="btnCerrarPreview">⬅ Volver</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
 }

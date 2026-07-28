@@ -1,56 +1,183 @@
-.modal-liquidacion{
-    width:900px;
-    max-width:95%;
-    max-height:90vh;
-    overflow-y:auto;
-    background:#ffffff;
-    color:#1f2937;
-    padding:30px;
-    border-radius:12px;
+.modal-liquidacion {
+  background: #fff;
+  width: 760px;
+  max-width: 95%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
-.modal-liquidacion h2,
-.modal-liquidacion h3{
-    color:#1f2937;
+/*========== ENCABEZADO ==========*/
+
+.modal-liquidacion .encabezado-liquidacion {
+  text-align: center;
+  margin-bottom: 25px;
 }
 
-.modal-liquidacion strong{
-    color:#374151;
-    min-width:140px;
-    display:inline-block;
+.modal-liquidacion .icono-liquidacion {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: #0f766e;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
 }
 
-.modal-liquidacion span{
-    color:#111827;
+.modal-liquidacion .encabezado-liquidacion h1 {
+  margin: 0;
+  font-size: 32px;
+  color: #1f2937;
 }
 
-.modal-liquidacion hr{
-    margin:20px 0;
-    border:none;
-    border-top:1px solid #d1d5db;
+.modal-liquidacion .encabezado-liquidacion p {
+  margin-top: 8px;
+  color: #6b7280;
 }
 
-.modal-liquidacion .fila-formulario{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin:10px 0;
-    color:#111827;
+/*========== DATOS ==========*/
+
+.modal-liquidacion .tarjeta-datos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 25px 0;
 }
 
-.modal-liquidacion table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:10px;
+.modal-liquidacion .dato {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
 }
 
-.modal-liquidacion td{
-    padding:12px;
-    border-bottom:1px solid #e5e7eb;
-    color:#111827;
+.modal-liquidacion .dato .icono {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
 }
 
-.modal-liquidacion h2:last-of-type{
-    margin-top:25px;
-    color:#0f766e;
+.modal-liquidacion .dato label {
+  display: block;
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 2px;
+}
+
+.modal-liquidacion .dato h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #111827;
+}
+
+/*========== COLUMNAS ==========*/
+
+.modal-liquidacion .columnas-liquidacion {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/*========== TARJETAS ==========*/
+
+.modal-liquidacion .card {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.modal-liquidacion .card h2 {
+  margin: 0;
+  padding: 14px 16px;
+  font-size: 20px;
+  font-weight: 600;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-liquidacion .card-haberes h2 {
+  color: #15803d;
+  background: #fff;
+}
+
+.modal-liquidacion .card-descuentos h2 {
+  color: #dc2626;
+  background: #fff;
+}
+
+/*========== TABLAS ==========*/
+
+.modal-liquidacion table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.modal-liquidacion th {
+  background: #f9fafb;
+  color: #374151;
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.modal-liquidacion th:last-child,
+.modal-liquidacion td:last-child {
+  text-align: right;
+}
+
+.modal-liquidacion td {
+  padding: 10px 14px;
+  border-top: 1px solid #e5e7eb;
+  color: #111827;
+}
+
+.modal-liquidacion .total {
+  font-weight: 700;
+  background: #fafafa;
+}
+
+/*========== LIQUIDO ==========*/
+
+.modal-liquidacion .liquido-final {
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal-liquidacion .liquido-final h2 {
+  margin: 0;
+  font-size: 22px;
+  color: #0f766e;
+}
+
+.modal-liquidacion .liquido-final h1 {
+  margin: 10px 0 0;
+  font-size: 36px;
+  color: #111827;
+}
+
+/*========== BOTONES ==========*/
+
+.modal-liquidacion .acciones-formulario {
+  display: flex;
+  gap: 12px;
+}
+
+.modal-liquidacion .acciones-formulario button {
+  flex: 1;
 }

@@ -5,13 +5,11 @@
   font-family: Poppins, sans-serif;
 }
 
-
-
-body{
-    margin:0;
-    font-family:"Poppins",sans-serif;
-    background:var(--demo-fondo);
-    color:var(--demo-texto);
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: var(--demo-fondo);
+  color: var(--demo-texto);
 }
 
 .contenedor {
@@ -19,14 +17,14 @@ body{
   min-height: 100vh;
 }
 
-.sidebar{
-    width:220px;
-    background:var(--demo-sidebar);
-    color:var(--demo-texto);
-    display:flex;
-    flex-direction:column;
-    padding:30px 20px;
-    box-sizing:border-box;
+.sidebar {
+  width: 220px;
+  background: var(--demo-sidebar);
+  color: var(--demo-texto);
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px;
+  box-sizing: border-box;
 }
 
 .sidebar h2 {
@@ -126,7 +124,7 @@ body{
   overflow-y: auto;
   border-radius: 10px;
   padding: 25px;
-  box-shadow: 0 20px 40px rgba(0,0,0,.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
 .modal h2 {
@@ -184,11 +182,11 @@ body{
 #btnCancelarTrabajador:hover {
   background: #4b5563;
 }
-#contenido{
-    flex:1;
-    padding:35px;
-    overflow:auto;
-    background:var(--demo-fondo);
+#contenido {
+  flex: 1;
+  padding: 35px;
+  overflow: auto;
+  background: var(--demo-fondo);
 }
 /* ==========================
    PANEL
@@ -201,32 +199,32 @@ body{
   margin-top: 30px;
 }
 
-.card{
-    background:var(--demo-card);
-    border:1px solid var(--demo-borde);
-    border-radius:var(--demo-radius);
-    padding:20px;
-    box-shadow:var(--demo-shadow);
-    transition:.25s;
+.card {
+  background: var(--demo-card);
+  border: 1px solid var(--demo-borde);
+  border-radius: var(--demo-radius);
+  padding: 20px;
+  box-shadow: var(--demo-shadow);
+  transition: 0.25s;
 }
 
-.card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 16px 32px rgba(0,0,0,.30);
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
 }
 
-.card h3{
-    margin:0;
-    font-size:.95rem;
-    font-weight:600;
-    color:var(--demo-texto-sec);
+.card h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--demo-texto-sec);
 }
 
-.card p{
-    margin-top:18px;
-    font-size:2rem;
-    font-weight:700;
-    color:var(--demo-primario);
+.card p {
+  margin-top: 18px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--demo-primario);
 }
 
 h1 {
@@ -234,54 +232,54 @@ h1 {
   font-weight: 700;
   margin-bottom: 10px;
 }
-.subtitulo{
-    margin-top:6px;
-    color:var(--demo-texto-sec);
-    font-size:.95rem;
+.subtitulo {
+  margin-top: 6px;
+  color: var(--demo-texto-sec);
+  font-size: 0.95rem;
 }
 /* ==========================
    TABLAS
 ========================== */
 
-.tabla{
-    width:100%;
-    background:#fff;
-    border-radius:12px;
-    overflow:hidden;
-    border-collapse:collapse;
-    box-shadow:0 4px 12px rgba(0,0,0,.08);
-    border:1px solid #d9e2ec;
-    box-shadow:0 8px 20px rgba(31,41,55,.08);
+.tabla {
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  border-collapse: collapse;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #d9e2ec;
+  box-shadow: 0 8px 20px rgba(31, 41, 55, 0.08);
 }
 
-.tabla thead{
-    background:#1f2937;
+.tabla thead {
+  background: #1f2937;
 }
 
-.tabla th{
-    color:#fff;
-    font-size:.9rem;
-    font-weight:600;
-    padding:16px;
+.tabla th {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 16px;
 }
 
-.tabla td{
-    padding:15px 16px;
-    border-bottom:1px solid #ececec;
-    font-size:.92rem;
-    color: #1f2937;
+.tabla td {
+  padding: 15px 16px;
+  border-bottom: 1px solid #ececec;
+  font-size: 0.92rem;
+  color: #1f2937;
 }
 
-.tabla tbody tr{
-    transition:.2s;
+.tabla tbody tr {
+  transition: 0.2s;
 }
 
-.tabla tbody tr:hover{
-    background:#f8fafc;
+.tabla tbody tr:hover {
+  background: #f8fafc;
 }
 
-.tabla tbody tr:last-child td{
-    border-bottom:none;
+.tabla tbody tr:last-child td {
+  border-bottom: none;
 }
 
 /* ==========================================
@@ -290,61 +288,60 @@ h1 {
 
 /* ===== Formulario Producción ===== */
 
-.formulario-produccion{
-    margin-top:20px;
+.formulario-produccion {
+  margin-top: 20px;
 }
 
-.fila-formulario{
-    display:flex;
-    align-items:flex-start;
-    margin-bottom:15px;
+.fila-formulario {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
 }
 
-.fila-formulario label{
-    width:170px;
-    font-weight:600;
-    padding-top:10px;
-    color:#374151;
-    flex-shrink:0;
+.fila-formulario label {
+  width: 170px;
+  font-weight: 600;
+  padding-top: 10px;
+  color: #374151;
+  flex-shrink: 0;
 }
 
 .fila-formulario input,
 .fila-formulario select,
-.fila-formulario textarea{
-    flex:1;
-    padding:10px;
-    border:1px solid #d1d5db;
-    border-radius:6px;
-    font-size:14px;
-    font-family:inherit;
+.fila-formulario textarea {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
 }
 
-.fila-formulario textarea{
-    min-height:90px;
-    resize:vertical;
+.fila-formulario textarea {
+  min-height: 90px;
+  resize: vertical;
 }
-.modal h2{
-    margin-bottom:30px;
-    text-align:center;
-    font-size:1.5rem;
+.modal h2 {
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #1f2937;
 }
 /* ===== SELECTS DE LOS FORMULARIOS ===== */
 
-.form-group select{
+.form-group select {
+  width: 100% !important;
+  height: 42px !important;
 
-    width:100% !important;
-    height:42px !important;
+  padding: 10px 12px !important;
 
-    padding:10px 12px !important;
+  border: 1px solid #d1d5db !important;
+  border-radius: 6px !important;
 
-    border:1px solid #d1d5db !important;
-    border-radius:6px !important;
+  font-size: 14px !important;
+  font-family: Poppins, sans-serif !important;
 
-    font-size:14px !important;
-    font-family:Poppins,sans-serif !important;
+  background: #fff !important;
 
-    background:#fff !important;
-
-    appearance:auto;
-
+  appearance: auto;
 }
