@@ -1,5 +1,3 @@
-import { cerrarModal } from "./modal.js";
-
 export function mostrarFormularioFiniquito(onGuardar) {
   const trabajadores = JSON.parse(sessionStorage.getItem("trabajadores")) || [];
 
@@ -137,7 +135,7 @@ export function mostrarFormularioFiniquito(onGuardar) {
 
   overlay
     .querySelector("#btnCancelarFiniquito")
-    .addEventListener("click", () => cerrarModal(overlay));
+    .addEventListener("click", () => overlay.remove());
 
   overlay
     .querySelector("#btnGuardarFiniquito")
@@ -160,6 +158,6 @@ export function mostrarFormularioFiniquito(onGuardar) {
         observaciones: overlay.querySelector("#finiquitoObservaciones").value,
       });
 
-      cerrarModal(overlay);
+      overlay.remove();
     });
 }
