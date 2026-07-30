@@ -1,43 +1,146 @@
-
-
 import { mostrarFormularioFiniquito } from "./finiquito-form.js";
-/*import { mostrarVistaFiniquito } from "./finiquito-preview.js";*/
+import { mostrarVistaFiniquito } from "./finiquito-preview.js";
 
-const btnNuevo = document.getElementById("btnNuevoFiniquito");
+export function mostrarFiniquitos() {
 
-if (btnNuevo) {
-  btnNuevo.addEventListener("click", () => {
-    mostrarFormularioFiniquito((datos) => {
-      const trabajadores =
-        JSON.parse(sessionStorage.getItem("trabajadores")) || [];
+    const contenido = document.getElementById("contenido");
 
-      const trabajador = trabajadores.find(
-        (t) => t.nombre === datos.trabajador,
-      );
+    contenido.innerHTML = `
 
-      const finiquito = {
-        trabajador: datos.trabajador,
+        <div class="encabezado-modulo">
 
-        empresa: trabajador?.empresa || "-",
+            <h2>Finiquitos</h2>
 
-        cargo: trabajador?.cargo || "-",
+            <button
+                class="btn-principal"
+                id="btnNuevoFiniquito">
 
-        fechaIngreso: datos.fechaIngreso,
+                + Nuevo Finiquito
 
-        fechaTermino: datos.fechaTermino,
+            </button>
 
-        causal: datos.causal,
+        </div>
 
-        sueldo: datos.sueldo,
+        <table class="tabla">
 
-        haberes: datos.haberes,
+            <thead>
 
-        descuentos: datos.descuentos,
+                <tr>
 
-        observaciones: datos.observaciones,
-      };
+                    <th>Trabajador</th>
+                    <th>Fecha Término</th>
+                    <th>Causal</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
 
-      mostrarVistaFiniquito(finiquito);
-    });
-  });
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td colspan="5" style="text-align:center">
+
+                        No hay finiquitos registrados.
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    `;
+
+    document
+        .getElementById("btnNuevoFiniquito")
+        .addEventListener("click", () => {
+
+            document.body.insertAdjacentHTML(
+                "beforeend",
+                mostrarFormularioFiniquito()
+            );
+
+            document
+                .getElementById("btnCancelarFiniquito")
+                .addEventListener("click", () => {
+
+                    document
+                        .querySelector(".modal-overlay")
+                        .remove();
+
+                });
+
+            document
+                .getElementById("btnGenerarFiniquito")
+                .addEventListener("click", () => {
+
+                    const trabajadores =
+                        JSON.parse(sessionStorage.getItem("trabajadores")) || [];
+
+                    const nombreTrabajador =
+                        document.getElementById("trabajador").value;
+
+                    const trabajador =
+                        trabajadores.find(
+                            t => `${t.nombre} ${t.apellidos}` === nombreTrabajador
+                        );
+
+                    const datos = {
+
+                        trabajador: nombreTrabajador,
+
+                        empresa: trabajador?.empresa || "-",
+
+                        cargo: trabajador?.cargo || "-",
+
+                        fechaIngreso:
+                            document.getElementById("fechaIngreso").value,
+
+                        fechaTermino:
+                            document.getElementById("fechaTermino").value,
+
+                        causal:
+                            document.getElementById("causal").value,
+
+                        sueldo:
+                            document.getElementById("sueldo").value,
+
+                        haberes:
+                            document.getElementById("haberes").value,
+
+                        descuentos:
+                            document.getElementById("descuentos").value,
+
+                        observaciones:
+                            document.getElementById("observaciones").value
+
+                    };
+
+                    document
+                        .querySelector(".modal-overlay")
+                        .remove();
+
+                    document.body.insertAdjacentHTML(
+                        "beforeend",
+                        mostrarVistaFiniquito(datos)
+                    );
+
+                    document
+                        .getElementById("btnCerrarPreview")
+                        .addEventListener("click", () => {
+
+                            document
+                                .querySelector(".modal-overlay")
+                                .remove();
+
+                        });
+
+                });
+
+        });
+
 }

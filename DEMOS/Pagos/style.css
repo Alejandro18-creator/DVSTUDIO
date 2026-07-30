@@ -321,11 +321,10 @@ h1 {
   min-height: 90px;
   resize: vertical;
 }
-.modal h2 {
-  margin-bottom: 30px;
-  text-align: center;
-  font-size: 1.5rem;
-  color: #1f2937;
+.modal h2{
+    margin-bottom:30px;
+    text-align:center;
+    font-size:1.5rem;
 }
 /* ===== SELECTS DE LOS FORMULARIOS ===== */
 
@@ -344,4 +343,111 @@ h1 {
   background: #fff !important;
 
   appearance: auto;
+} 
+.tabla-documento{
+    width:100%;
+    border-collapse:collapse;
+    margin-bottom:20px;
 }
+
+.tabla-documento td{
+    padding:10px;
+    border-bottom:1px solid var(--demo-borde);
+}
+
+.tabla-documento td:first-child{
+    width:35%;
+    font-weight:bold;
+}
+
+.observaciones-documento{
+    min-height:80px;
+    padding:12px;
+    border:1px solid var(--demo-borde);
+    border-radius:8px;
+}
+
+.firmas{
+    display:flex;
+    justify-content:space-between;
+    gap:40px;
+    margin-top:40px;
+}
+
+.firmas div{
+    width:45%;
+    text-align:center;
+}
+
+/* ==========================
+   FINIQUITOS (contraste)
+   Solo se aplican a los modales de finiquitos
+========================== */
+
+.modal-overlay.finiquito .modal {
+  background: #0f1724;
+  color: #e6eef8;
+}
+
+.modal-overlay.finiquito .modal h2 {
+  color: #e6eef8;
+}
+
+.modal-overlay.finiquito .fila-formulario label,
+.modal-overlay.finiquito .form-group label {
+  color: #e6eef8;
+}
+
+.modal-overlay.finiquito .fila-formulario input,
+.modal-overlay.finiquito .fila-formulario select,
+.modal-overlay.finiquito .fila-formulario textarea,
+.modal-overlay.finiquito .form-group input,
+.modal-overlay.finiquito .form-group select,
+.modal-overlay.finiquito .form-group textarea {
+  background: #0b1220;
+  color: #e6eef8;
+  border: 1px solid #374151;
+}
+
+.modal-overlay.finiquito input::placeholder,
+.modal-overlay.finiquito textarea::placeholder {
+  color: #9ca3af;
+}
+
+.modal-overlay.finiquito .acciones-formulario button {
+  color: #fff;
+}
+
+.modal-overlay.finiquito #btnCancelarFiniquito {
+  background: #374151;
+  color: #fff;
+}
+
+.modal-overlay.finiquito .btn-principal {
+  background: #2563eb;
+  color: #fff;
+}
+
+.modal-overlay.finiquito .modal:focus-within {
+  box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+}
+
+/* Valor visual igual que los inputs del formulario (solo finiquitos) */
+.modal-overlay.finiquito .fila-valor{
+  flex:1;
+  padding:10px;
+  border:1px solid #374151;
+  border-radius:6px;
+  background:#0b1220;
+  color:#e6eef8;
+  font-size:14px;
+  font-family:inherit;
+  min-height:42px;
+  display:flex;
+  align-items:center;
+}
+
+.modal-overlay.finiquito .fila-valor[style*="text-align:right"]{ /* keep right-aligned numbers */
+  justify-content:flex-end;
+}
+

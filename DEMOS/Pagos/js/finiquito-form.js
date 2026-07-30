@@ -1,163 +1,152 @@
-export function mostrarFormularioFiniquito(onGuardar) {
-  const trabajadores = JSON.parse(sessionStorage.getItem("trabajadores")) || [];
+export function mostrarFormularioFiniquito(finiquito = {}) {
 
-  const overlay = document.createElement("div");
-  overlay.className = "modal-overlay";
+    const trabajadores =
+        JSON.parse(sessionStorage.getItem("trabajadores")) || [];
 
-  overlay.innerHTML = `
-        <div class="modal">
+    return `
 
-            <h2>Nuevo Finiquito</h2>
+        <div class="modal-overlay finiquito">
 
-            <div class="grupo-formulario">
-                <label>Trabajador</label>
-                <select id="finiquitoTrabajador">
-                    <option value="">Seleccione un trabajador</option>
+            <div class="modal finiquito-modal">
 
-                    ${trabajadores
-                      .map(
-                        (t) => `
-                        <option value="${t.nombre}">
-                            ${t.nombre}
-                        </option>
-                    `,
-                      )
-                      .join("")}
+                <h2>
+                    ${finiquito.id ? "Editar Finiquito" : "Nuevo Finiquito"}
+                </h2>
 
-                </select>
-            </div>
+                <div class="formulario-produccion">
 
-            <div class="grupo-formulario">
-                <label>Fecha de ingreso</label>
-                <input
-                    type="date"
-                    id="finiquitoIngreso"
-                    readonly
-                >
-            </div>
+                    <div class="fila-formulario">
 
-            <div class="grupo-formulario">
-                <label>Fecha de término</label>
-                <input
-                    type="date"
-                    id="finiquitoTermino"
-                >
-            </div>
+                        <label>Trabajador</label>
 
-            <div class="grupo-formulario">
-                <label>Causal de término</label>
+                        <select id="trabajador">
 
-                <select id="finiquitoCausal">
+                            <option value="">-- Seleccionar trabajador --</option>
 
-                    <option value="">
-                        Seleccione...
-                    </option>
+                            ${trabajadores.map(trabajador => `
+                                <option
+                                    value="${trabajador.nombre} ${trabajador.apellidos}"
+                                    ${finiquito.trabajador === `${trabajador.nombre} ${trabajador.apellidos}` ? "selected" : ""}
+                                >
+                                    ${trabajador.nombre} ${trabajador.apellidos}
+                                </option>
+                            `).join("")}
 
-                    <option>Renuncia voluntaria</option>
-                    <option>Mutuo acuerdo</option>
-                    <option>Vencimiento del plazo</option>
-                    <option>Conclusión del trabajo</option>
-                    <option>Necesidades de la empresa</option>
-                    <option>Despido por incumplimiento</option>
+                        </select>
 
-                </select>
+                    </div>
 
-            </div>
+                    <div class="fila-formulario">
 
-            <div class="grupo-formulario">
-                <label>Último sueldo imponible</label>
+                        <label>Fecha de ingreso</label>
 
-                <input
-                    type="number"
-                    id="finiquitoSueldo"
-                    min="0"
-                    value="0"
-                >
-            </div>
+                        <input
+                            type="date"
+                            id="fechaIngreso"
+                            value="${finiquito.fechaIngreso || ""}"
+                            readonly>
 
-            <div class="grupo-formulario">
-                <label>Otros haberes</label>
+                    </div>
 
-                <input
-                    type="number"
-                    id="finiquitoHaberes"
-                    min="0"
-                    value="0"
-                >
-            </div>
+                    <div class="fila-formulario">
 
-            <div class="grupo-formulario">
-                <label>Otros descuentos</label>
+                        <label>Fecha de término</label>
 
-                <input
-                    type="number"
-                    id="finiquitoDescuentos"
-                    min="0"
-                    value="0"
-                >
-            </div>
+                        <input
+                            type="date"
+                            id="fechaTermino"
+                            value="${finiquito.fechaTermino || ""}">
 
-            <div class="grupo-formulario">
-                <label>Observaciones</label>
+                    </div>
 
-                <textarea
-                    id="finiquitoObservaciones"
-                    rows="4"
-                ></textarea>
-            </div>
+                    <div class="fila-formulario">
 
-            <div class="acciones-formulario">
-                <button id="btnGuardarFiniquito">
-                    Generar
-                </button>
+                        <label>Causal de término</label>
 
-                <button id="btnCancelarFiniquito">
-                    Cancelar
-                </button>
+                        <select id="causal">
+
+                            <option value="">-- Seleccionar causal --</option>
+
+                            <option>Renuncia voluntaria</option>
+                            <option>Mutuo acuerdo</option>
+                            <option>Necesidades de la empresa</option>
+                            <option>Vencimiento del plazo</option>
+                            <option>Conclusión del trabajo</option>
+                            <option>Despido por incumplimiento</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="fila-formulario">
+
+                        <label>Último sueldo imponible</label>
+
+                        <input
+                            type="text"
+                            id="sueldo"
+                            value="${finiquito.sueldo || ""}"
+                            inputmode="numeric">
+
+                    </div>
+
+                    <div class="fila-formulario">
+
+                        <label>Otros haberes</label>
+
+                        <input
+                            type="text"
+                            id="haberes"
+                            value="${finiquito.haberes || ""}"
+                            inputmode="numeric">
+
+                    </div>
+
+                    <div class="fila-formulario">
+
+                        <label>Otros descuentos</label>
+
+                        <input
+                            type="text"
+                            id="descuentos"
+                            value="${finiquito.descuentos || ""}"
+                            inputmode="numeric">
+
+                    </div>
+
+                    <div class="fila-formulario">
+
+                        <label>Observaciones</label>
+
+                        <textarea
+                            id="observaciones">${finiquito.observaciones || ""}</textarea>
+
+                    </div>
+
+                </div>
+
+                <div class="acciones-formulario">
+
+                    <button
+                        id="btnGenerarFiniquito"
+                        class="btn-principal">
+
+                        Generar Finiquito
+
+                    </button>
+
+                    <button id="btnCancelarFiniquito">
+
+                        Cancelar
+
+                    </button>
+
+                </div>
+
             </div>
 
         </div>
+
     `;
 
-  document.body.appendChild(overlay);
-
-  const trabajadorSelect = overlay.querySelector("#finiquitoTrabajador");
-
-  const fechaIngreso = overlay.querySelector("#finiquitoIngreso");
-
-  trabajadorSelect.addEventListener("change", () => {
-    const trabajador = trabajadores.find(
-      (t) => t.nombre === trabajadorSelect.value,
-    );
-
-    fechaIngreso.value = trabajador?.fechaIngreso || "";
-  });
-
-  overlay
-    .querySelector("#btnCancelarFiniquito")
-    .addEventListener("click", () => overlay.remove());
-
-  overlay
-    .querySelector("#btnGuardarFiniquito")
-    .addEventListener("click", () => {
-      onGuardar({
-        trabajador: trabajadorSelect.value,
-
-        fechaIngreso: fechaIngreso.value,
-
-        fechaTermino: overlay.querySelector("#finiquitoTermino").value,
-
-        causal: overlay.querySelector("#finiquitoCausal").value,
-
-        sueldo: overlay.querySelector("#finiquitoSueldo").value,
-
-        haberes: overlay.querySelector("#finiquitoHaberes").value,
-
-        descuentos: overlay.querySelector("#finiquitoDescuentos").value,
-
-        observaciones: overlay.querySelector("#finiquitoObservaciones").value,
-      });
-
-      overlay.remove();
-    });
 }
