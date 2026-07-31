@@ -4,7 +4,9 @@ export function mostrarFormularioProducto(producto = {}) {
 
     <div class="modal-overlay">
 
-        <div class="modal">
+        <div
+    class="modal"
+    id="modalProducto">
 
             <h2>Nuevo Producto</h2>
 

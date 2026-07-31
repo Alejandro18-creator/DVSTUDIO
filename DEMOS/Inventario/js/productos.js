@@ -4,8 +4,7 @@ export function mostrarProductos() {
 
     const contenido = document.getElementById("contenido");
 
-    const productos =
-        JSON.parse(sessionStorage.getItem("productos")) || [];
+    const productos = cargarProductos();
 
     contenido.innerHTML = `
 
@@ -44,6 +43,7 @@ export function mostrarProductos() {
 
                 ${
                     productos.length
+
                     ?
 
                     productos.map(producto => `
@@ -100,6 +100,68 @@ export function mostrarProductos() {
                 mostrarFormularioProducto()
             );
 
+            document
+                .getElementById("btnCancelarProducto")
+                .addEventListener("click", () => {
+
+                    document
+                        .querySelector(".modal-overlay")
+                        .remove();
+
+                });
+
+            document
+                .getElementById("btnGuardarProducto")
+                .addEventListener("click", () => {
+
+                    guardarProducto();
+
+                });
+
         });
+
+}
+
+function cargarProductos() {
+
+    return JSON.parse(
+        sessionStorage.getItem("productos")
+    ) || [];
+
+}
+
+function guardarProductosStorage(productos) {
+
+    sessionStorage.setItem(
+        "productos",
+        JSON.stringify(productos)
+    );
+
+}
+
+function guardarProducto() {
+
+    const productos = cargarProductos();
+
+    const nuevoProducto = {
+
+        codigo: document.getElementById("codigoProducto").value.trim(),
+        nombre: document.getElementById("nombreProducto").value.trim(),
+        categoria: document.getElementById("categoriaProducto").value.trim(),
+        stock: Number(document.getElementById("stockProducto").value),
+        precioCompra: Number(document.getElementById("precioCompraProducto").value),
+        precioVenta: Number(document.getElementById("precioVentaProducto").value)
+
+    };
+
+    productos.push(nuevoProducto);
+
+    guardarProductosStorage(productos);
+
+    document
+        .querySelector(".modal-overlay")
+        .remove();
+
+    mostrarProductos();
 
 }
