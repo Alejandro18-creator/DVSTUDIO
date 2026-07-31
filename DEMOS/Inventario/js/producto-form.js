@@ -1,6 +1,5 @@
 export function mostrarFormularioProducto(producto = {}) {
-
-    return `
+  return `
 
     <div class="modal-overlay">
 
@@ -10,7 +9,7 @@ export function mostrarFormularioProducto(producto = {}) {
 
             <h2>Nuevo Producto</h2>
 
-            <div class="grupo-formulario">
+            <div class="form-group">
 
                 <label>Código</label>
 
@@ -21,7 +20,7 @@ export function mostrarFormularioProducto(producto = {}) {
 
             </div>
 
-            <div class="grupo-formulario">
+            <div class="form-group">
 
                 <label>Nombre</label>
 
@@ -32,18 +31,30 @@ export function mostrarFormularioProducto(producto = {}) {
 
             </div>
 
-            <div class="grupo-formulario">
+            <div class="form-group">
 
-                <label>Categoría</label>
+    <label>Categoría</label>
 
-                <input
-                    type="text"
-                    id="categoriaProducto"
-                    value="${producto.categoria || ""}">
+    <select id="categoriaProducto">
 
-            </div>
+        <option value="">Seleccione una categoría</option>
 
-            <div class="grupo-formulario">
+        <option value="Herramientas">Herramientas</option>
+        <option value="Electricidad">Electricidad</option>
+        <option value="Ferretería">Ferretería</option>
+        <option value="Pinturas">Pinturas</option>
+        <option value="Repuestos">Repuestos</option>
+        <option value="Insumos">Insumos</option>
+        <option value="Limpieza">Limpieza</option>
+        <option value="Seguridad">Seguridad</option>
+        <option value="Oficina">Oficina</option>
+        <option value="Otros">Otros</option>
+
+    </select>
+
+</div>
+
+            <div class="form-group">
 
                 <label>Stock Inicial</label>
 
@@ -54,7 +65,7 @@ export function mostrarFormularioProducto(producto = {}) {
 
             </div>
 
-            <div class="grupo-formulario">
+            <div class="form-group">
 
                 <label>Precio Compra</label>
 
@@ -65,7 +76,7 @@ export function mostrarFormularioProducto(producto = {}) {
 
             </div>
 
-            <div class="grupo-formulario">
+            <div class="form-group">
 
                 <label>Precio Venta</label>
 
@@ -101,5 +112,4 @@ export function mostrarFormularioProducto(producto = {}) {
     </div>
 
     `;
-
 }

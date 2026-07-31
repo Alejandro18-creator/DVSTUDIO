@@ -1,12 +1,11 @@
 import { mostrarFormularioProducto } from "./producto-form.js";
 
 export function mostrarProductos() {
+  const contenido = document.getElementById("contenido");
 
-    const contenido = document.getElementById("contenido");
+  const productos = cargarProductos();
 
-    const productos = cargarProductos();
-
-    contenido.innerHTML = `
+  contenido.innerHTML = `
 
         <div class="encabezado-modulo">
 
@@ -42,11 +41,10 @@ export function mostrarProductos() {
             <tbody>
 
                 ${
-                    productos.length
-
-                    ?
-
-                    productos.map(producto => `
+                  productos.length
+                    ? productos
+                        .map(
+                          (producto) => `
 
                         <tr>
 
@@ -65,11 +63,10 @@ export function mostrarProductos() {
 
                         </tr>
 
-                    `).join("")
-
-                    :
-
-                    `
+                    `,
+                        )
+                        .join("")
+                    : `
 
                     <tr>
 
@@ -82,7 +79,6 @@ export function mostrarProductos() {
                     </tr>
 
                     `
-
                 }
 
             </tbody>
@@ -91,77 +87,52 @@ export function mostrarProductos() {
 
     `;
 
-    document
-        .getElementById("btnNuevoProducto")
-        .addEventListener("click", () => {
+  document.getElementById("btnNuevoProducto").addEventListener("click", () => {
+    abrirFormulario();
+  });
+}
 
-            document.body.insertAdjacentHTML(
-                "beforeend",
-                mostrarFormularioProducto()
-            );
+function abrirFormulario() {
+  document.body.insertAdjacentHTML("beforeend", mostrarFormularioProducto());
 
-            document
-                .getElementById("btnCancelarProducto")
-                .addEventListener("click", () => {
+  document
+    .getElementById("btnCancelarProducto")
+    .addEventListener("click", () => {
+      document.querySelector(".modal-overlay").remove();
+    });
 
-                    document
-                        .querySelector(".modal-overlay")
-                        .remove();
-
-                });
-
-            document
-                .getElementById("btnGuardarProducto")
-                .addEventListener("click", () => {
-
-                    guardarProducto();
-
-                });
-
-        });
-
+  document
+    .getElementById("btnGuardarProducto")
+    .addEventListener("click", () => {
+      guardarProducto();
+    });
 }
 
 function cargarProductos() {
-
-    return JSON.parse(
-        sessionStorage.getItem("productos")
-    ) || [];
-
+  return JSON.parse(sessionStorage.getItem("productos")) || [];
 }
 
 function guardarProductosStorage(productos) {
-
-    sessionStorage.setItem(
-        "productos",
-        JSON.stringify(productos)
-    );
-
+  sessionStorage.setItem("productos", JSON.stringify(productos));
 }
 
 function guardarProducto() {
+  const productos = cargarProductos();
 
-    const productos = cargarProductos();
+  const nuevoProducto = {
+    codigo: document.getElementById("codigoProducto").value.trim(),
+    nombre: document.getElementById("nombreProducto").value.trim(),
+    categoria: document.getElementById("categoriaProducto").value.trim(),
+    stock: Number(document.getElementById("stockProducto").value),
+    precioCompra: Number(document.getElementById("precioCompraProducto").value),
+    precioVenta: Number(document.getElementById("precioVentaProducto").value),
+  };
 
-    const nuevoProducto = {
+  productos.push(nuevoProducto);
 
-        codigo: document.getElementById("codigoProducto").value.trim(),
-        nombre: document.getElementById("nombreProducto").value.trim(),
-        categoria: document.getElementById("categoriaProducto").value.trim(),
-        stock: Number(document.getElementById("stockProducto").value),
-        precioCompra: Number(document.getElementById("precioCompraProducto").value),
-        precioVenta: Number(document.getElementById("precioVentaProducto").value)
+  guardarProductosStorage(productos);
 
-    };
+  document.querySelector(".modal-overlay").remove();
 
-    productos.push(nuevoProducto);
-
-    guardarProductosStorage(productos);
-
-    document
-        .querySelector(".modal-overlay")
-        .remove();
-
-    mostrarProductos();
-
+  mostrarProductos();
 }

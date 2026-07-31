@@ -117,37 +117,64 @@ body {
 }
 
 .modal {
-  background: #fff;
-  width: 760px;
+  width: 720px;
   max-width: 95%;
   max-height: 90vh;
+  background: var(--demo-card);
+  color: var(--demo-texto);
+  border: 1px solid var(--demo-borde);
+  border-radius: var(--demo-radius);
+  box-shadow: var(--demo-shadow);
+  padding: 32px;
   overflow-y: auto;
-  border-radius: 10px;
-  padding: 25px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
 .modal h2 {
-  margin-bottom: 20px;
+  text-align: center;
+  margin: 0 0 18px 0;
+  color: var(--demo-texto);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+  gap: 8px;
+  margin-bottom: 18px;
 }
 
 .form-group label {
-  margin-bottom: 6px;
+  color: var(--demo-texto);
+  font-size: 0.92rem;
   font-weight: 600;
-  color: #1f2937;
 }
 
-.form-group input {
-  padding: 10px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  font-size: 14px;
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: var(--demo-fondo);
+  color: var(--demo-texto);
+  border: 1px solid var(--demo-borde);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  transition: 0.25s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--demo-primario);
+  box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.18);
+}
+
+.form-group select option {
+  background: var(--demo-card);
+  color: var(--demo-texto);
 }
 
 .acciones-formulario {
@@ -235,7 +262,6 @@ h1 {
   font-size: 0.95rem;
 }
 
-
 .tabla {
   width: 100%;
   background: #fff;
@@ -277,8 +303,6 @@ h1 {
   border-bottom: none;
 }
 
-
-
 .formulario-produccion {
   margin-top: 20px;
 }
@@ -312,12 +336,6 @@ h1 {
   min-height: 90px;
   resize: vertical;
 }
-.modal h2{
-    margin-bottom:30px;
-    text-align:center;
-    font-size:1.5rem;
-}
-
 
 .form-group select {
   width: 100% !important;
@@ -334,43 +352,41 @@ h1 {
   background: #fff !important;
 
   appearance: auto;
-} 
-.tabla-documento{
-    width:100%;
-    border-collapse:collapse;
-    margin-bottom:20px;
+}
+.tabla-documento {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
-.tabla-documento td{
-    padding:10px;
-    border-bottom:1px solid var(--demo-borde);
+.tabla-documento td {
+  padding: 10px;
+  border-bottom: 1px solid var(--demo-borde);
 }
 
-.tabla-documento td:first-child{
-    width:35%;
-    font-weight:bold;
+.tabla-documento td:first-child {
+  width: 35%;
+  font-weight: bold;
 }
 
-.observaciones-documento{
-    min-height:80px;
-    padding:12px;
-    border:1px solid var(--demo-borde);
-    border-radius:8px;
+.observaciones-documento {
+  min-height: 80px;
+  padding: 12px;
+  border: 1px solid var(--demo-borde);
+  border-radius: 8px;
 }
 
-.firmas{
-    display:flex;
-    justify-content:space-between;
-    gap:40px;
-    margin-top:40px;
+.firmas {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 40px;
 }
 
-.firmas div{
-    width:45%;
-    text-align:center;
+.firmas div {
+  width: 45%;
+  text-align: center;
 }
-
-
 
 .modal-overlay.finiquito .modal {
   background: #0f1724;
@@ -417,25 +433,24 @@ h1 {
 }
 
 .modal-overlay.finiquito .modal:focus-within {
-  box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+  box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
 }
 
-
-.modal-overlay.finiquito .fila-valor{
-  flex:1;
-  padding:10px;
-  border:1px solid #374151;
-  border-radius:6px;
-  background:#0b1220;
-  color:#e6eef8;
-  font-size:14px;
-  font-family:inherit;
-  min-height:42px;
-  display:flex;
-  align-items:center;
+.modal-overlay.finiquito .fila-valor {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #374151;
+  border-radius: 6px;
+  background: #0b1220;
+  color: #e6eef8;
+  font-size: 14px;
+  font-family: inherit;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
 }
 
-.modal-overlay.finiquito .fila-valor[style*="text-align:right"]{ /* keep right-aligned numbers */
-  justify-content:flex-end;
+.modal-overlay.finiquito .fila-valor[style*="text-align:right"] {
+  /* keep right-aligned numbers */
+  justify-content: flex-end;
 }
-
