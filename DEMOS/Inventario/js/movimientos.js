@@ -61,5 +61,21 @@ export function mostrarMovimientos() {
         "beforeend",
         mostrarFormularioMovimiento(),
       );
+      const productos = JSON.parse(sessionStorage.getItem("productos")) || [];
+
+      const select = document.getElementById("productoMovimiento");
+
+      productos.forEach((producto) => {
+        select.innerHTML += `
+        <option value="${producto.codigo}">
+            ${producto.nombre}
+        </option>
+    `;
+      });
+      document
+        .getElementById("btnCancelarMovimiento")
+        .addEventListener("click", () => {
+          document.querySelector(".modal-overlay").remove();
+        });
     });
 }

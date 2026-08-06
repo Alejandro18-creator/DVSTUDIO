@@ -30,6 +30,25 @@ export function mostrarFormularioMovimiento() {
                 </select>
 
             </div>
+            <div class="acciones-formulario">
+
+    <button
+        id="btnGuardarMovimiento"
+        class="btn-principal">
+
+        Guardar
+
+    </button>
+
+    <button
+        id="btnCancelarMovimiento"
+        class="btn-secundario">
+
+        Cancelar
+
+    </button>
+
+</div>
 
         </div>
 
