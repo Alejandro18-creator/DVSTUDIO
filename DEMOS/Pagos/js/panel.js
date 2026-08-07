@@ -1,13 +1,12 @@
 export function mostrarPanel() {
+  const contenido = document.getElementById("contenido");
 
-    const contenido = document.getElementById("contenido");
-
-    contenido.innerHTML = `
+  contenido.innerHTML = `
 
         <div class="encabezado-modulo">
 
             <div>
-                <h1>Panel de Control</h1>
+                <h1>Sistema de Pagos</h1>
                 <p class="subtitulo">
                     Resumen general del sistema.
                 </p>
@@ -45,5 +44,4 @@ export function mostrarPanel() {
         </div>
 
     `;
-
 }
