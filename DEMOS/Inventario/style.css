@@ -337,22 +337,7 @@ h1 {
   resize: vertical;
 }
 
-.form-group select {
-  width: 100% !important;
-  height: 42px !important;
 
-  padding: 10px 12px !important;
-
-  border: 1px solid #d1d5db !important;
-  border-radius: 6px !important;
-
-  font-size: 14px !important;
-  font-family: Poppins, sans-serif !important;
-
-  background: #fff !important;
-
-  appearance: auto;
-}
 .tabla-documento {
   width: 100%;
   border-collapse: collapse;
